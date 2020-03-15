@@ -7,7 +7,8 @@ import com.amandafarrell.www.postpartumtracking.database.EventDatabaseDao
 
 class EventTrackerViewModelFactory(
     private val dataSource: EventDatabaseDao,
-    private val application: Application) : ViewModelProvider.Factory {
+    private val application: Application
+) : ViewModelProvider.Factory {
     @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(EventTrackerViewModel::class.java)) {
