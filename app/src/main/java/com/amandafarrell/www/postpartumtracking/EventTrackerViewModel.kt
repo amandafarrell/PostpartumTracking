@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.amandafarrell.www.postpartumtracking.database.Event
@@ -24,6 +25,15 @@ class EventTrackerViewModel(
 
     val eventsString = Transformations.map(events) { events ->
         formatEvents(events, application.resources)
+    }
+
+    private val _navigateToDetailsActivity = MutableLiveData<Event>()
+
+    val navigateToDetailsActivity: LiveData<Event>
+        get() = _navigateToDetailsActivity
+
+    fun doneNavigating(){
+        _navigateToDetailsActivity.value = null
     }
 
     init {
@@ -51,6 +61,8 @@ class EventTrackerViewModel(
             val newEvent = Event()
             insert(newEvent)
             latestEvent.value = getLatestEventFromDatabase()
+
+            _navigateToDetailsActivity.value = latestEvent.value
         }
     }
 
