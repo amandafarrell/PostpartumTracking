@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.amandafarrell.www.postpartumtracking.database.EventDatabase
 import com.amandafarrell.www.postpartumtracking.databinding.ActivityMainBinding
+import com.amandafarrell.www.postpartumtracking.details.DetailsActivity
 
 class MainActivity : AppCompatActivity() {
 
