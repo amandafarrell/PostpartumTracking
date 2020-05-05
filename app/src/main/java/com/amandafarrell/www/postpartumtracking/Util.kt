@@ -21,6 +21,7 @@ fun formatEvents(events: List<Event>, resources: Resources): Spanned {
         append(resources.getString(R.string.title))
         events.forEach {
             append("<br>")
+            append("<b>${it.description}<br></b>")
             append(resources.getString(R.string.start_time))
             append("\t${convertLongToDateString(it.startTimeMilli)}<br>")
             if (it.endTimeMilli != it.startTimeMilli) {

@@ -2,6 +2,7 @@ package com.amandafarrell.www.postpartumtracking.details
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -38,6 +39,10 @@ class DetailsActivity : AppCompatActivity() {
                 startActivity(intent)
                 detailsViewModel.doneNavigating()
             }
+        })
+
+        button.setOnClickListener(View.OnClickListener {
+            detailsViewModel.onSetEventDescription(descriptionEditText.text.toString())
         })
     }
 }
