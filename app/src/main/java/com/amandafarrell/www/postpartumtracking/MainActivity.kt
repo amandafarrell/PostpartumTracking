@@ -1,14 +1,18 @@
 package com.amandafarrell.www.postpartumtracking
 
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.amandafarrell.www.postpartumtracking.database.EventDatabase
 import com.amandafarrell.www.postpartumtracking.databinding.ActivityMainBinding
 import com.amandafarrell.www.postpartumtracking.details.DetailsActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +30,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.eventTrackerViewModel = eventTrackerViewModel
         binding.lifecycleOwner = this
+
+        val adapter = EventAdapter()
+
+        val mDividerItemDecoration = DividerItemDecoration(
+            binding.mainRecyclerView.context,
+            binding.mainRecyclerView.layoutDirection
+        )
+        mDividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.horizontal_line))
+
+        binding.mainRecyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            this.adapter = adapter
+            addItemDecoration(mDividerItemDecoration)
+        }
+
+        eventTrackerViewModel.getEvents().observe(this, Observer {
+            it?.let {
+                adapter.data = it
+            }
+        })
 
         eventTrackerViewModel.navigateToDetailsActivity.observe(this, Observer { event ->
             event?.let {

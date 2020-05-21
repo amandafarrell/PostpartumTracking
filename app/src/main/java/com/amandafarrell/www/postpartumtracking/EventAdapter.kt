@@ -1,29 +1,46 @@
 package com.amandafarrell.www.postpartumtracking
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.amandafarrell.www.postpartumtracking.database.Event
-import kotlinx.android.synthetic.main.list_item.view.*
+import java.util.*
 
-class EventAdapter(private val events: Array<Event>) :
+class EventAdapter() :
     RecyclerView.Adapter<EventAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val view: View) : RecyclerView.ViewHolder(view)
+    var data = listOf<Event>()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): EventAdapter.MyViewHolder {
+    class MyViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
+        RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item, parent, false)) {
+        private var mDescriptionText: TextView? = null
+        private var mStartTimeText: TextView? = null
+
+        init {
+            mDescriptionText = itemView.findViewById(R.id.description_text)
+            mStartTimeText = itemView.findViewById(R.id.start_text)
+        }
+
+        fun bind(event: Event) {
+            mDescriptionText?.text = event.description
+            mStartTimeText?.text = Date(event.startTimeMilli).toString()
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.list_item, parent, false) as View
-        return MyViewHolder(view)
+        return MyViewHolder(view, parent)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.view.start_text.text = events[position].startTimeMilli.toString()
+        val event: Event = data[position]
+        holder.bind(event)
     }
 
-    override fun getItemCount() = events.size
+    override fun getItemCount() = data.size
 }

@@ -1,9 +1,6 @@
 package com.amandafarrell.www.postpartumtracking
 
 import android.app.Application
-import android.content.Intent
-import android.os.Bundle
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -27,12 +24,16 @@ class EventTrackerViewModel(
         formatEvents(events, application.resources)
     }
 
+    fun getEvents(): LiveData<List<Event>> {
+        return events
+    }
+
     private val _navigateToDetailsActivity = MutableLiveData<Event>()
 
     val navigateToDetailsActivity: LiveData<Event>
         get() = _navigateToDetailsActivity
 
-    fun doneNavigating(){
+    fun doneNavigating() {
         _navigateToDetailsActivity.value = null
     }
 
