@@ -34,10 +34,11 @@ class MainActivity : AppCompatActivity() {
         val adapter = EventAdapter()
 
         val mDividerItemDecoration = DividerItemDecoration(
-            binding.mainRecyclerView.context,
-            binding.mainRecyclerView.layoutDirection
+            applicationContext,
+            DividerItemDecoration.VERTICAL
         )
-        mDividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.horizontal_line))
+
+        //mDividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.horizontal_line))
 
         binding.mainRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
