@@ -15,15 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/descriptionEditText"
             android:layout_width="wrap_content"
@@ -33,7 +24,43 @@
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextDateStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="@+id/descriptionEditText"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+
+        <EditText
+            android:id="@+id/editTextTimeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintStart_toStartOf="@+id/editTextTimeStart"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTimeStart" />
+
+        <EditText
+            android:id="@+id/editTextDateEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="@+id/editTextDateStart"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateStart" />
+
+        <EditText
+            android:id="@+id/editTextTimeStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="time"
+            app:layout_constraintStart_toStartOf="@+id/editTextDateEnd"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateEnd" />
 
         <Button
             android:id="@+id/button"
@@ -42,7 +69,58 @@
             android:text="@string/save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTimeEnd" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/descriptionEditText"
+            android:text="@string/description"
+            app:layout_constraintBottom_toBottomOf="@+id/descriptionEditText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/descriptionEditText" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/editTextTimeEnd"
+            android:text="@string/end_time"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextTimeEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/editTextTimeEnd" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/editTextDateStart"
+            android:text="@string/start_date"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDateStart"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionEditText" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:labelFor="@id/editTextDateEnd"
+            android:text="@string/end_date"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDateEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateStart" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/editTextTimeStart"
+            android:text="@string/start_time"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTimeEnd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateEnd" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

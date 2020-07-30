@@ -15,6 +15,11 @@ class DetailsViewModel(
 
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    private val event = database.getLiveEvent(eventKey)
+
+    fun getEvent(): LiveData<Event?>{
+        return event
+    }
 
     private val _navigateToEventTracker = MutableLiveData<Boolean?>()
 

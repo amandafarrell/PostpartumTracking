@@ -44,7 +44,7 @@ class EventAdapter() :
         override fun onClick(v: View?) {
             val intent = Intent(mInflater.context, DetailsActivity::class.java).apply {
                 putExtra(
-                    Resources.getSystem().getString(R.string.extra_event), mEvent.eventId.toString()
+                   mInflater.context.getString(R.string.extra_event), mEvent.eventId.toString()
                 )
             }
             mInflater.context.startActivity(intent)

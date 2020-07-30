@@ -18,6 +18,9 @@ interface EventDatabaseDao {
     @Query("SELECT * from event_table WHERE eventId = :key")
     fun get(key: Long): Event?
 
+    @Query("SELECT * from event_table WHERE eventId = :key")
+    fun getLiveEvent(key: Long): LiveData<Event?>
+
     @Query("DELETE FROM event_table")
     fun clear()
 

@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity() {
         eventTrackerViewModel.navigateToDetailsActivity.observe(this, Observer { event ->
             event?.let {
                 val intent = Intent(this, DetailsActivity::class.java).apply {
-                    putExtra(getString(R.string.extra_event), event.eventId.toString())
+                    putExtra(getString(R.string.extra_event), event.eventId)
                 }
-                startActivity(intent)
+                this.startActivity(intent)
                 eventTrackerViewModel.doneNavigating()
             }
         })

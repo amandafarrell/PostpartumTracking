@@ -20,10 +20,6 @@ class EventTrackerViewModel(
     private var latestEvent = MutableLiveData<Event?>()
     private val events = database.getAllEvents()
 
-    val eventsString = Transformations.map(events) { events ->
-        formatEvents(events, application.resources)
-    }
-
     fun getEvents(): LiveData<List<Event>> {
         return events
     }
